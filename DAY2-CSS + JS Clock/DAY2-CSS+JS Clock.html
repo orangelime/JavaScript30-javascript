@@ -10,7 +10,6 @@
 <body>
     <div class="clock">
         <div class="clock-face">
-            <div class="center"></div>
             <div class="hand hour-hand"></div>
             <div class="hand min-hand"></div>
             <div class="hand second-hand"></div>
@@ -37,11 +36,16 @@
         //console.log(minutes)
 
         const hours = now.getHours();
-        const hoursDegrees = ((hours / 12) *360) + 90;
+        //每分鐘轉0.5度
+        const hourMinutes = minutes / 2;
+        // const hoursDegrees = ((hours / 24) *360) + 90;
+        //一小時轉30度+每分鐘轉0.5度
+        const hoursDegrees = hours * 30 + hourMinutes + 90;
         hoursHand.style.transform = `rotate(${hoursDegrees}deg)`;
         //console.log(hours)
     }
-
+    /*重整頁面時指針會在一秒後才到正確位置，所以在執行計時器之前先執行setDate函式*/
+    setDate();
     setInterval(setDate,1000);
 </script>
 </body>
