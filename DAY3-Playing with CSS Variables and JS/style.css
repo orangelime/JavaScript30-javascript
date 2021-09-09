@@ -10,6 +10,9 @@ img{
     height: 500px;
     width: 800px;
 }
+h2{
+    --base:#BADA55; 
+}
 .h1{
     color: var(--base);
 }
