@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Panels Image Gallery</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
+    <!-- Photo by <a href="https://unsplash.com/@camylla93?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Camylla Battani</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+    Photo by <a href="https://unsplash.com/@fracali_?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Francesco Califano</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+    Photo by <a href="https://unsplash.com/@colincassidy?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Colin Cassidy</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+    Photo by <a href="https://unsplash.com/@anamarkovych?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Ana Markovych</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+    Photo by <a href="https://unsplash.com/@fracali_?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Francesco Califano</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+   -->
+</head>
+<body>
+    <div class="wrapper">
+        <div class="pic pic1">
+            <p>Hey</p>
+            <p>Let's</p>
+            <p>Dance</p>
+        </div>
+        <div class="pic pic2">
+            <p>Give</p>
+            <p>Take</p>
+            <p>Receive</p>
+        </div>
+        <div class="pic pic3">
+            <p>Experience</p>
+            <p>It</p>
+            <p>Today</p>
+        </div>
+        <div class="pic pic4">
+            <p>Give</p>
+            <p>All</p>
+            <p>You Can</p>
+        </div>
+        <div class="pic pic5">
+            <p>Life</p>
+            <p>In</p>
+            <p>Motion</p>
+        </div>
+    </div>
+
+<script>
+    const pics = document.querySelectorAll('.pic');
+    // console.log(pics)
+    function toggleOpen(){
+        console.log('hi')
+        this.classList.toggle('open');
+    }
+    function toggleActive(e){
+        console.log(e.propertyName) //flex-grow font-size
+        //in other browser may just show 'flex' like safari
+        if(e.propertyName.includes('flex')){
+            this.classList.toggle('open-active');
+        }
+    }
+    pics.forEach(pic => pic.addEventListener('click',toggleOpen));
+    pics.forEach(pic => pic.addEventListener('transitionend',toggleActive))
+</script>
+</body>
+</html>
