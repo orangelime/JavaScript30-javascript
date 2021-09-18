@@ -21,5 +21,102 @@
             <button data-skip="25" class="player__button">25s »</button>
         </div>
     </div>
+
+<script>
+    // Get our elements
+    const player = document.querySelector('.player');
+    const video = player.querySelector('.viewer');
+    const progress = player.querySelector('.progress');
+    const progressBar = player.querySelector('.progress__filled');
+    const toggle = player.querySelector('.toggle');
+    const ranges = player.querySelectorAll('.player__slider');
+    const skipButtons = player.querySelectorAll('[data-skip]');
+    
+    // Build our functions
+
+    //點擊影片部分就播放影片或暫停
+    function togglePlay(){
+        //寫法一
+        // if(video.paused){
+        //     video.play();
+        // }else{
+        //     video.pause();
+        // }
+        //寫法二
+        const method = video.paused? 'play' : 'pause';
+        video[method]();
+    }
+    //toggle button轉換圖形
+    function updateButton(){
+        const icon = this.paused ?  '►' : '❚ ❚';
+        //console.log(icon)
+        toggle.textContent = icon;
+    }
+    //快轉
+    function skip(){
+        //console.log(this.dataset.skip);
+        video.currentTime += parseFloat(this.dataset.skip);
+    }
+    //調整音量和播放速度
+    function handleRangeUpdate(){
+        //console.log(this.name)
+        //console.log(this.value)
+        video[this.name] = this.value;
+    }
+    //按快轉按紐進度條變色
+    function handleProgress(){
+        //先取得目前的影片進度
+        const percent = (video.currentTime / video.duration) * 100;
+        progressBar.style.flexBasis = `${percent}%`;
+    }
+
+    //進度條操作 click
+    function scrub(e){
+        const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration;
+        video.currentTime = scrubTime;
+        console.log(e)
+    }
+
+    // Hook up the event listeners
+
+    //點擊影片部分就播放影片或暫停
+    video.addEventListener('click',togglePlay);
+
+    //toggle button轉換圖形
+    video.addEventListener('play',updateButton);
+    video.addEventListener('pause',updateButton);
+
+    //toggle按鈕點擊就播放影片或暫停
+    toggle.addEventListener('click',togglePlay);
+
+    //快轉
+    skipButtons.forEach(button =>{
+        button.addEventListener('click',skip);
+    })
+
+    //調整音量和播放速度
+    ranges.forEach(range =>{
+        range.addEventListener('change',handleRangeUpdate);
+    })
+    ranges.forEach(range =>{
+        range.addEventListener('mousemove',handleRangeUpdate);
+    })
+
+    //按快轉按紐進度條變色
+    video.addEventListener('timeupdate',handleProgress);
+
+    //進度條操作 click
+    progress.addEventListener('click',scrub);
+    //進度條操作 拖曳
+    // progress.addEventListener('mousemove',scrub);
+    //只設定mousemove的話會隨時拖曳所以設一個變量代表目前的拖曳狀態
+    let mousedown = false;
+    progress.addEventListener('mousemove',() => mousedown && scrub(e));
+    progress.addEventListener('mousedown',() => mousedown => true);
+    progress.addEventListener('mouseup',() => mouseup => false);
+
+    // 挑戰:如何弄一個全螢幕按紐? 點即可進入全螢幕或取消全螢幕模式
+
+</script>
 </body>
 </html>
