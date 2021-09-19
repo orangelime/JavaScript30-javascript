@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Sequence Detection (KONAMI CODE)</title>
+    <!-- 參考https://www.buzzfeed.com/ 這個網站 -->
+    <!-- 这个挑战要实现的效果是，当在此页面完整输入了“暗号”（一串事先定义好的字符串）时，生成新的 Cornify 特效。 -->
+    <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+</head>
+<body>
+
+<script>
+    // whenever someone presses one of these items,push it into an array
+    const pressArray = [];
+    //暗號
+    const secretCode = 'helloworld';
+    window.addEventListener('keyup',(e) => {
+        //console.log(e.key);
+        pressArray.push(e.key);
+        // 验证输入的字符。此处方法是将每一个输入的字符存入 `pressed` 数组，
+        // 然后处理数组，使其呈现队列的性质，也就是输入一个字符时，会挤出原有的的字符，
+        // 保证其最大长度始终为 `secretCode` 的长度。这样做的目的是为了便于验证暗号，
+        // 只有完整无误的输入一次暗号时，才会触发相应的效果。
+        console.log(- secretCode.length-1)
+        pressArray.splice(- secretCode.length - 1,pressArray.length - secretCode.length);
+        //console.log(arr)
+        if(pressArray.join('').includes(secretCode)){
+            console.log('DING DING');
+            cornify_add();
+        }
+        console.log(pressArray);
+    })
+    
+
+</script>
+</body>
+</html>
