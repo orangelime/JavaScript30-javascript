@@ -1,0 +1,54 @@
+/* Photo by <a href="https://unsplash.com/@lefterisk?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Lefteris kallergis</a> on <a href="https://unsplash.com/s/photos/food-and-drink?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Photo by <a href="https://unsplash.com/@picoftasty?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Mae Mu</a> on <a href="https://unsplash.com/s/photos/food-and-drink?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Photo by <a href="https://unsplash.com/@cceee?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Cody  Chan</a> on <a href="https://unsplash.com/s/photos/food-and-drink?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Photo by <a href="https://unsplash.com/@foodess?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Food Photographer | Jennifer Pallian</a> on <a href="https://unsplash.com/s/photos/food-and-drink?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+   */
+html{
+   box-sizing: border-box;
+   background-color: #ffc600;
+   font-family:'helvetica neue';
+   font-size: 20px;
+   font-weight: 200;
+}
+body{
+   margin: 0;
+}
+*,*:before,*:after{
+   box-sizing: inherit;
+}
+h1{
+   margin-top: 0;
+}
+.wrapper{
+   background-color: white;
+   max-width: 700px;
+   margin:100px auto;
+   text-align: justify;
+   padding: 40px;
+}
+img{
+   width: 400px;
+   height: 400px;
+}
+.align-left{
+   float: left;
+   margin-right: 20px;
+}
+.align-right{
+   float: right;
+   margin-left: 20px;
+}
+.slide-in{
+   opacity: 0;
+   transition:all .1s;
+}
+.align-left.slide-in{
+   transform: translateX(-30%) scale(0.95);
+}
+.align-right.slide-in{
+   transform: translateX(30%) scale(0.95);
+}
+.slide-in.active{
+   opacity: 1;
+   transform: translateX(0%) scale(1);
+}

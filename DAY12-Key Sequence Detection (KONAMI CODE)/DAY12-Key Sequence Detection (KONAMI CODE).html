@@ -23,7 +23,7 @@
         // 然后处理数组，使其呈现队列的性质，也就是输入一个字符时，会挤出原有的的字符，
         // 保证其最大长度始终为 `secretCode` 的长度。这样做的目的是为了便于验证暗号，
         // 只有完整无误的输入一次暗号时，才会触发相应的效果。
-        console.log(- secretCode.length-1)
+        //splice(-11,1)，也就是從後面數-1開始至-11，當下的那個字母包含之前的字母全部截取掉
         pressArray.splice(- secretCode.length - 1,pressArray.length - secretCode.length);
         //console.log(arr)
         if(pressArray.join('').includes(secretCode)){
