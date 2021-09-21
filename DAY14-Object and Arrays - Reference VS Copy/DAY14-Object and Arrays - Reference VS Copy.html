@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object and Arrays - Reference VS Copy</title>
+</head>
+<body>
+    <h1>Let's see console</h1>
+<script>
+    //strat with strings numbers and booleans
+    let age = 100;
+    let age2 = age;
+    //console.log(age,age2);//100 100
+    age = 200;
+    //console.log(age,age2);//200 100
+
+    let name = 'hello';
+    let name2 = name;
+    //console.log(name,name2); //hello hello
+    name = 'world';
+    //console.log(name,name2); //world hello
+
+    //Let's say we have an array
+    const players = ['Lola','Sarah','Ryan','Poppy'];
+    //and we want to make a copy of it
+    const team = players;
+    console.log(players,team);//['Lola', 'Sarah', 'Ryan', 'Poppy'] ['Lola', 'Sarah', 'Ryan', 'Poppy']
+    //You might think we can just do something like this
+    //team[3] = 'Lux';
+    //console.log(players,team);//['Lola', 'Sarah', 'Ryan', 'Lux'] ['Lola', 'Sarah', 'Ryan', 'Lux']
+    //however what happens when we update that array?
+    //now here is the problem!
+    // oh no - we have edited the original array too!
+    // why? It's because that is an array reference, not an array copy.
+    // They both point to the same array!
+    //So,how do we fix this? We take a copy instead! use slice()
+    const team2 = players.slice();
+    console.log(team2);
+    team2[3] = 'Lux';
+    console.log(team,team2);//['Lola', 'Sarah', 'Ryan', 'Poppy'] ['Lola', 'Sarah', 'Ryan', 'Lux']
+    
+    //one day
+
+    //or create a new array and concat the old one in
+    const team3 = [].concat(players);
+    console.log(team3);//['Lola', 'Sarah', 'Ryan', 'Poppy']
+    
+    //or use the new ES6 Spread
+    const team4 = [...players];
+    console.log(team4); //['Lola', 'Sarah', 'Ryan', 'Poppy']
+    team4[3] = 'heeee hawww';
+    console.log(team,team4);//['Lola', 'Sarah', 'Ryan', 'Poppy'] ['Lola', 'Sarah', 'Ryan', 'heeee hawww']
+
+    const team5 = Array.from(players);
+    console.log(team5)// ['Lola', 'Sarah', 'Ryan', 'Poppy']
+    team5[3] = 'cool';
+    console.log(team,team5);//['Lola', 'Sarah', 'Ryan', 'Poppy'] ['Lola', 'Sarah', 'Ryan', 'cool']
+    //now when we update it, the original one isn't changed
+
+    //The same thing goes for objects,let's say we have a person object
+
+    //with Objects
+    const person = {
+        name:'Hello World',
+        age:80
+    }
+
+    //and think we make a copy
+    const captain = person;
+    //captain.number = 99;
+    //console.log(person);//{name: 'Hello World', age: 80, number: 99}
+    
+    //how do we take a copy instead? use Object.assign
+    const captain2 = Object.assign({},person,{number:99,age:12});
+    console.log(captain2);//{name: 'Hello World', age: 12, number: 99}
+    console.log(person);//{name: 'Hello World', age: 80}
+
+    // we will hopefully soon see the object ...spread
+    const captain3 = {...person};
+    console.log(captain3) //{name: 'Hello World', age: 80}
+
+    // Things to note - this is only 1 lecel deep - both for Arrays and Objects.
+    // Lodash has a cloneDeep method,but we should think twice before using it
+    const obj = {
+        name:'hihihi',
+        age:100,
+        social:{
+            twitter:'@hihihi',
+            facebook:'hihihi.dev'
+        }
+    }
+    console.log(obj);
+
+    const dev = Object.assign({},obj);
+    console.log(obj);
+    console.log(dev);
+    //dev.social.twitter = '@coolman';
+    console.log(dev.social);//{twitter: '@coolman', facebook: 'hihihi.dev'}
+    console.log(obj.social);//{twitter: '@coolman', facebook: 'hihihi.dev'}
+
+    //deep clone 這個方法可以copy整個物件，之後再修改新物件不會汙染到原本的物件
+    const dev2 = JSON.parse(JSON.stringify(obj));
+    dev2.social.twitter = '@coolman';
+    console.log(dev2.social);//{twitter: '@coolman', facebook: 'hihihi.dev'}
+    console.log(obj.social);//{twitter: '@hihihi', facebook: 'hihihi.dev'}
+</script>
+</body>
+</html>
