@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Sorting Band Names without articles</title>
+</head>
+<body>
+    <ul id="bands"></ul>
+
+<script>
+    const bands = ['The Plot in You', 'The Devil Wears Prada', 
+    'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 
+    'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 
+    'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
+    
+    // 去除字符串中的`The`，`A`以及`An`的前缀后再进行排序
+    function strip(bandName){
+        return bandName.replace(/^(a | the |an )/i,'').trim();
+    }
+    const sortedBands = bands.sort((a,b) =>{
+        // if(strip(a) > strip(b)){
+        //     return 1;
+        // }else{
+        //     return -1;
+        // }
+        //可以改寫成下面這行
+        return strip(a) > strip(b) ? 1:-1;
+    });
+    console.log(sortedBands)
+    document.querySelector('#bands').innerHTML = sortedBands.map(band => `<li>${band}</li>`).join('')
+
+</script>
+</body>
+</html>

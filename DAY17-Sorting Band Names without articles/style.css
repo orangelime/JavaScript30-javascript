@@ -1,0 +1,33 @@
+/* Photo by <a href="https://unsplash.com/@wanderingcrow?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Perry Kibler</a> on <a href="https://unsplash.com/s/photos/mountain?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a> */
+html{
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+*,*:before,*:after{
+    box-sizing: inherit;
+}
+body{
+    margin: 0;
+    background-image: url(img/mountain.jpg);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+#bands{
+    list-style: inside square;
+    background: white;
+    font-size: 20px;
+    width: 500px;
+    margin: auto;
+    padding: 0;
+    box-shadow: 0 0 20px rgba(0,0,0,.9);
+}
+#bands li{
+    padding: 20px;
+    border-bottom: 1px solid #efefef;
+}
+#bands li:last-child{
+    border-bottom: 0;
+}
