@@ -18,7 +18,8 @@
     
     // 去除字符串中的`The`，`A`以及`An`的前缀后再进行排序
     function strip(bandName){
-        return bandName.replace(/^(a | the |an )/i,'').trim();
+        return bandName.replace(/^(a |the |an )/i,'').trim();
+        // return bandName.replace(/^(A|The|An)\s{1}/,'').trim();//參考soyanne作法
     }
     const sortedBands = bands.sort((a,b) =>{
         // if(strip(a) > strip(b)){
