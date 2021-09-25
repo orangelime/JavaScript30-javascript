@@ -1,0 +1,88 @@
+/* Photo by <a href="https://unsplash.com/@pixasquare?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Pixasquare</a> on <a href="https://unsplash.com/s/photos/home?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a> */
+html{
+    box-sizing: border-box;
+    background: rgb(236,235,236);
+    font-family:'helvetica neue';
+    font-size: 20px;
+    font-weight: 200;
+}
+body{
+    margin: 0;
+}
+*,*:before,*:after{
+    box-sizing: inherit;
+}
+header{
+    height: 85vh;
+    background-image: url(img/home.jpg);
+    background-size: cover;
+    background-position: bottom;
+    position: relative;
+}
+h1{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    width: 100%;
+    color: rgb(241,223,98);
+    text-shadow: 3px 4px 0 rgba(0,0,0,.8);
+}
+nav{
+    top: 0;
+    position: relative;
+    width: 100%;
+    background: black;
+    z-index: 1;
+    transition: all .5s;
+}
+nav ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+}
+nav li{
+    flex: 1;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+nav a{
+    padding: 20px;
+    color: rgb(241,223,98);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition:all 1s;
+    font-weight: 200;
+}
+li.logo{
+    max-width: 0;
+    overflow: hidden;
+    background: rgb(236,235,236);
+    font-weight: 600;
+    font-size: 30px;
+    transition: all 1s;
+}
+li.logo a{
+    color:black;
+}
+.wrapper{
+    max-width: 700px;
+    margin: 70px auto;
+    background: white;
+    padding: 40px;
+    text-align: justify;
+    box-shadow: 0 0 10px 5px rgba(0,0,0,.2);
+    transform: scale(0.98);
+}
+img{
+    width: 400px;
+    height: 400px;
+}
+.fixed-nav nav{
+    position:fixed;
+    background: rgba(0,0,0,.5);
+}
