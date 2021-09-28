@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Stripe Follow Along Dropdown</title>
+    <!-- 參考stripe.com這個網站 -->
+</head>
+<body>
+    <h2>Cool</h2>
+    <nav class="nav">
+        <div class="dropdownBackground">
+            <span class="arrow"></span>
+        </div>
+        <ul class="navItem">
+            <li>
+                <a href="#">About Me</a>
+                <div class="dropdown dropdown1">
+                    <div class="bio">
+                        <img src="https://logo.clearbit.com/wesbos.com">
+                        <p>Wes Bos sure does love web development. He teaches things 
+                            like JavaScript, CSS and BBQ. Wait. BBQ isn't part of web
+                            development. It should be though!</p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a href="#">Courses</a>
+                <ul class="dropdown courses">
+                    <li>
+                        <span class="code">RFB</span>
+                        <a href="https://ReactForBeginners.com">React For Beginners</a>
+                    </li>
+                    <li>
+                        <span class="code">ES6</span>
+                        <a href="https://ES6.io">ES6 For Everyone</a>
+                    </li>
+                    <li>
+                        <span class="code">STPU</span>
+                        <a href="https://SublimeTextBook.com">Sublime Text Power User</a>
+                    </li>
+                    <li>
+                        <span class="code">WTF</span>
+                        <a href="http://flexbox.io">What The Flexbox?!</a>
+                    </li>
+                    <li>
+                        <span class="code">LRX</span>
+                        <a href="http://LearnRedux.com">Learn Redux</a>
+                    </li>
+                    <li>
+                        <span class="code">CLPU</span>
+                        <a href="http://CommandLinePowerUser.com">Command Line Power User</a>
+                    </li>
+                    <li>
+                        <span class="code">MMD</span>
+                        <a href="http://MasteringMarkdown.com">Mastering Markdown</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Other Links</a>
+                <ul class="dropdown dropdown3">
+                    <li><a class="button" href="http://twitter.com/wesbos">Twiter</a></li>
+                    <li><a class="button" href="http://facebook.com/wesbos.developer">Facebook</a></li>
+                    <li><a class="button" href="http://wesbos.com">Blog</a></li>
+                    <li><a class="button" href="http://wesbos.com/courses">Course Catalog</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+<script>
+    const triggers = document.querySelectorAll(".navItem>li");
+    const background = document.querySelector(".dropdownBackground");
+    const nav = document.querySelector('.nav');
+
+    function handleEnter(){
+        // console.log('enter')
+        // console.log(this)
+        this.classList.add('trigger-enter');
+        // setTimeout(function(){
+        //     console.log(this) //window...?
+        //     this.classList.add('trigger-enter-active');
+        // },150)
+        setTimeout(() => {
+            if(this.classList.contains('trigger-enter')){
+                this.classList.add('trigger-enter-active')
+            }
+        },150);
+        background.classList.add('open');
+
+        //將背景移到navItem後面
+        const dropdown = this.querySelector('.dropdown');
+        // console.log(dropdown)
+        const dropdownCoords = dropdown.getBoundingClientRect();
+        // console.log(dropdownCoords);//DOMRect
+        const navCoords = nav.getBoundingClientRect();
+        // console.log(navCoords)
+        
+        const coords = {
+            height:dropdownCoords.height,
+            width:dropdownCoords.width,
+            top:dropdownCoords.top - navCoords.top,
+            left:dropdownCoords.left - navCoords.left
+        }
+
+        background.style.setProperty('width',`${coords.width}px`);
+        background.style.setProperty('height',`${coords.height}px`);
+        background.style.setProperty('transform',`translate(${coords.left}px,${coords.top}px)`);
+    }
+
+    function handleLeave(){
+        // console.log('leave')
+        this.classList.remove('trigger-enter','trigger-enter-active');
+        background.classList.remove('open');
+    }
+
+    triggers.forEach(trigger => trigger.addEventListener('mouseenter',handleEnter));
+    triggers.forEach(trigger => trigger.addEventListener('mouseleave',handleLeave));
+
+
+
+
+</script>
+</body>
+</html>
