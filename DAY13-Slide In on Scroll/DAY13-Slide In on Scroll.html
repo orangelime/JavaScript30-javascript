@@ -38,8 +38,7 @@
     </div>
 <script>
     // wait = 20 等20秒觸發checkSlide function，但會一直觸發debounce function
-    // debounce的作用：降低事件监听的频率，使用了 Lodash 中的 debounce 方法
-    function debounce(func,wait = 20,immediate = true){
+// debounce的作用：降低事件監聽的頻率，使用了 Lodash 中的 debounce 方法    function debounce(func,wait = 20,immediate = true){
         let timeout;
         return function(){
             let context = this,args = arguments;
@@ -60,7 +59,7 @@
         // console.count(e)
         // console.log(window.scrollY)
         sliderImages.forEach(img => {
-            // 滑动页面的底部距离扣除图片一半的高 從上往下滑
+            // 滑動頁面的底部距离扣除圖片一半的高 從上往下滑
             const slideInAt = (window.scrollY + window.innerHeight) - img.height/2;
             console.log(slideInAt)
             // 圖片頂部距離頁面頂部的距離 + 圖片高度 從下往上滑
@@ -79,10 +78,10 @@
     }
 
 
-    // 针对页面的滚动事件进行监听，可以先打出事件对象来看看。同时在接下来的调试过程中也能利用这打出各个尺寸的值，来帮助我们感受每个尺寸的含义。
-    // 此外由于每次滚动都触发监听事件，会降低 JavaScript 运行性能，所以用 `debounce` 函数来降低触发的次数。
+    // 針對頁面的滾動事件監聽，可以先打出事件對象來看看。同時在接下来的過程中也能利用這打出各個尺寸的值，來幫助我們感受每個尺寸的含義。
+    // 此外由於每次滾動都觸發監聽事件，會降低JS運行性能，所以用debounce函數來降低觸發的次數。
     // window.addEventListener('scroll',checkSlide);
-    window.addEventListener('scroll',debounce(checkSlide))
+    window.addEventListener('scroll',debounce(checkSlide));
 </script> 
 </body>
 </html>

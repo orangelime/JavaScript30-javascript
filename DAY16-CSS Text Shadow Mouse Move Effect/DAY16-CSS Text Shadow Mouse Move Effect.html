@@ -26,7 +26,7 @@
         let {offsetX:x,offsetY:y} = e;
         // console.log(x,y);
         //console.log(this,e.target);
-        // 将鼠标位置转换为相对视口左上角的坐标，本例中由于hero元素占满视口故未起实际作用
+        // 將鼠標位置轉換為相對視口左上角的座標，本例中由于hero元素占满視口故未起實際作用
         if(this !== e.target){
             x = x + e.target.offsetLeft;
             y = y + e.target.offsetTop;

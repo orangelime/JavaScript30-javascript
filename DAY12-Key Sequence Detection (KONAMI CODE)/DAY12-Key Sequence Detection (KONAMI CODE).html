@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Key Sequence Detection (KONAMI CODE)</title>
     <!-- 參考https://www.buzzfeed.com/ 這個網站 -->
-    <!-- 这个挑战要实现的效果是，当在此页面完整输入了“暗号”（一串事先定义好的字符串）时，生成新的 Cornify 特效。 -->
-    <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+<!-- 这个挑戰要呈現的效果是，當在此頁面完整輸入了'secretCode'（一串事先定義好的字符串）时，產生新的 Cornify 特效。 -->    <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
 </head>
 <body>
 
@@ -19,10 +18,10 @@
     window.addEventListener('keyup',(e) => {
         //console.log(e.key);
         pressArray.push(e.key);
-        // 验证输入的字符。此处方法是将每一个输入的字符存入 `pressed` 数组，
-        // 然后处理数组，使其呈现队列的性质，也就是输入一个字符时，会挤出原有的的字符，
-        // 保证其最大长度始终为 `secretCode` 的长度。这样做的目的是为了便于验证暗号，
-        // 只有完整无误的输入一次暗号时，才会触发相应的效果。
+        // 驗證輸入的字符。這個方法是將每一个輸入的字符存入pressArray陣列，
+        // 然後處理pressArray陣列，使其呈現先進先出的形式，也就是輸入一个字符時，會擠出原有的的字符，
+        // 並保證其最大長度始终為 secretCode的長度。這樣做的目的是為了驗證暗號，
+        // 只有完整無誤的輸入一次暗號時，才会觸發相應的效果。
         //splice(-11,1)，也就是從後面數-1開始至-11，當下的那個字母包含之前的字母全部截取掉
         pressArray.splice(- secretCode.length - 1,pressArray.length - secretCode.length);
         //console.log(arr)

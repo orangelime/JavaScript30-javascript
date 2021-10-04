@@ -40,10 +40,10 @@
     const itemsList = document.querySelector('.plates');
     
     // LocalStorage 更新 
-    // 我们利用 LocalStorage 把信息存到本地，从而可以保证刷新后内容不变。
-    // 但使用 `localStorage` 的时候，直接把 `items` 传入得到的值是 [object Object]，
-    // 所以需要在把数据传进去之前就把内容转换成 String 类型的数据，
-    // 之后读取时也使用 `JSON.parse()` 来将数据转换成 JSON 格式。
+    // 我們利用 LocalStorage 把訊息存到本地，從而可以在刷新後内容保持不變。
+    // 但使用localStorage的時候，直接把items傳入得到的值是 [object Object]，
+    // 所以需要在把數據傳進去之前就把内容轉換成String類型的數據，
+    // 之後讀取時也使用JSON.parse()來將數據轉換成JSON格式。
     // const items = [];
     let items = JSON.parse(localStorage.getItem('items')) || [];
 
